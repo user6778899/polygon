@@ -181,16 +181,16 @@ void print_path(const std::vector<Node*>& path) {
 int main() {
     Graph graph = parse_graph("spb_graph.txt");
 
-    double home_lat = 59.9470649, home_lon = 30.4141326;
-    double itmo_lat = 60.010688, itmo_lon = 30.451075;
-    // https://2gis.ru/spb/firm/70000001076385536/30.4141326%2C59.9470649?m=30.4141326%2C59.9470649%2F17.28 // Георгиевский сквер
+    double park_lat = 59.9470649, park_lon = 30.4141326;
+    double home_lat = 60.010688, home_lon = 30.451075;
+    // https://2gis.ru/spb/geo/70030076152808718/30.415508%2C59.948007?m=30.415378%2C59.947457%2F17.31 // Георгиевский сквер
     // https://2gis.ru/spb/geo/5348660212684319/30.451075%2C60.010688?m=30.451992%2C60.010544%2F17.71    // Пискарёвский проспект, 144 лит АЛ
 
+    std::cout << "Searching for node close to park: (" << park_lat << ", " << park_lon << ")" << std::endl;
     std::cout << "Searching for node close to home: (" << home_lat << ", " << home_lon << ")" << std::endl;
-    std::cout << "Searching for node close to ITMO: (" << itmo_lat << ", " << itmo_lon << ")" << std::endl;
 
-    Node* start = graph.find_closest_node(home_lat, home_lon);
-    Node* goal = graph.find_closest_node(itmo_lat, itmo_lon);
+    Node* start = graph.find_closest_node(park_lat, park_lon);
+    Node* goal = graph.find_closest_node(home_lat, home_lon);
 
     if (!start || !goal) {
         std::cerr << "Error: Could not find start or goal node!" << std::endl;
